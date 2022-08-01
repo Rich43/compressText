@@ -22,17 +22,17 @@ public class StringProcessorService {
             final var currentString = listInputSplit.get(index);
             final var nextString = getNextString(listInputSplit, index + 1);
             final var stringAfterNext = getNextString(listInputSplit, index + 2);
-            if (Character.isDigit(currentString.charAt(0)) && nextString != null) {
-                resultString.append(nextString.repeat(parseInt(currentString)));
-                index += 2;
-                continue;
-            } else if (nextString != null && nextString.equals("\\") && stringAfterNext.equals("\\")) {
+             if (nextString != null && nextString.equals("\\") && stringAfterNext.equals("\\")) {
                 resultString.append(nextString.repeat(parseInt(currentString)));
                 index += 3;
                 continue;
             } else if (Character.isDigit(currentString.charAt(0)) && nextString != null && nextString.equals("\\") && Character.isDigit(stringAfterNext.charAt(0))) {
                 resultString.append(stringAfterNext.repeat(parseInt(currentString)));
                 index += 3;
+                continue;
+            } else if (Character.isDigit(currentString.charAt(0)) && nextString != null) {
+                resultString.append(nextString.repeat(parseInt(currentString)));
+                index += 2;
                 continue;
             }
             resultString.append(currentString);
