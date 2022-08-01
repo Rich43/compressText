@@ -1,5 +1,7 @@
+import service.StringProcessorService;
+
 public class MainApplication {
     public static void main(String[] args) {
-        System.out.println("Output");
+        System.out.println(new StringProcessorService().processString());
     }
 }
