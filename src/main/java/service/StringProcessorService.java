@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.asList;
@@ -74,14 +75,14 @@ public class StringProcessorService {
 
     private static List<String> getDuplicateStringGroups(final List<String> listInputSplit) {
         final var groups = new ArrayList<String>();
-        //noinspection ResultOfMethodCallIgnored
-        listInputSplit.stream().reduce((a, b) -> {
+        Optional<String> leftOverString = listInputSplit.stream().reduce((a, b) -> {
             if (!a.endsWith(b)) {
                 groups.add(a);
                 return b;
             }
             return a + b;
         });
+        leftOverString.ifPresent(groups::add);
         return groups;
     }
 }
