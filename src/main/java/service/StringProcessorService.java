@@ -10,12 +10,18 @@ import static java.util.regex.Pattern.compile;
 
 public class StringProcessorService {
     public String convertDuplicatedStringIntoCompressedString(final String duplicatedString) {
+        if (duplicatedString == null) {
+            return null;
+        }
         final List<String> listInputSplit = splitStringIntoList(duplicatedString);
         final var groups = getDuplicateStringGroups(listInputSplit);
         return compressGroupsIntoString(groups);
     }
 
     public String convertCompressedStringIntoDuplicatedString(final String compressedString) {
+        if (compressedString == null) {
+            return null;
+        }
         final var resultString = new StringBuilder();
         final List<String> listInputSplit = splitStringIntoList(compressedString);
         var index = 0;

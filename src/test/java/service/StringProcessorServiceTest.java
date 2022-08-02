@@ -10,11 +10,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringProcessorServiceTest {
     public static Stream<Arguments> DuplicatedStringIntoCompressedStringTestData() {
-        return Stream.of(Arguments.of("AAAAANNNMMMMYYYYuuuu\\\\\\\\\\\\\\UUUUaaaarWWLLLLJ888DDDDDDDDD", "5A3N4M4Y4u7\\\\4U4ar2W4LJ3\\89D"));
+        return Stream.of(
+                Arguments.of("AAAAANNNMMMMYYYYuuuu\\\\\\\\\\\\\\UUUUaaaarWWLLLLJ888DDDDDDDDD", "5A3N4M4Y4u7\\\\4U4ar2W4LJ3\\89D"),
+                Arguments.of(null, null)
+        );
     }
 
     public static Stream<Arguments> CompressedStringIntoDuplicatedStringTestData() {
-        return Stream.of(Arguments.of("5A3N4M4Y4u7\\\\4U4ar2W4LJ3\\89D", "AAAAANNNMMMMYYYYuuuu\\\\\\\\\\\\\\UUUUaaaarWWLLLLJ888DDDDDDDDD"));
+        return Stream.of(
+                Arguments.of("5A3N4M4Y4u7\\\\4U4ar2W4LJ3\\89D", "AAAAANNNMMMMYYYYuuuu\\\\\\\\\\\\\\UUUUaaaarWWLLLLJ888DDDDDDDDD"),
+                Arguments.of(null, null)
+        );
     }
 
     @ParameterizedTest
